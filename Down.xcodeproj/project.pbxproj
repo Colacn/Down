@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		14C5E33521877CE900D5380C /* DownView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D41689B51CFFE6BB00E5802B /* DownView.bundle */; };
 		26CABB93252B4D490032183C /* ChildSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CABB92252B4D490032183C /* ChildSequence.swift */; };
+		8199EC8B2C1852660042696B /* ImageUrlAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8199EC8A2C1852660042696B /* ImageUrlAttribute.swift */; };
 		8A569F481E6B3ED2008BE2AC /* DownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43AE5D91CFFD0D0006E1522 /* DownView.swift */; };
 		8A569F491E6B3ED9008BE2AC /* blocks.c in Sources */ = {isa = PBXBuildFile; fileRef = D4201EF71CFA5D63008EEC6E /* blocks.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8A569F4A1E6B3ED9008BE2AC /* buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = D4201EF81CFA5D63008EEC6E /* buffer.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -201,6 +202,7 @@
 /* Begin PBXFileReference section */
 		14C5E33621877FCD00D5380C /* DownView (macOS).bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "DownView (macOS).bundle"; sourceTree = "<group>"; };
 		26CABB92252B4D490032183C /* ChildSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildSequence.swift; sourceTree = "<group>"; };
+		8199EC8A2C1852660042696B /* ImageUrlAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlAttribute.swift; sourceTree = "<group>"; };
 		8A569F401E6B3E50008BE2AC /* Down.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Down.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFAEAFB1E6E32E900E09B68 /* DownTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DownTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C73B9B522A687C400C8E60F /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
@@ -734,6 +736,7 @@
 				EEFFFDDA22F4C36800036FD5 /* ThematicBreakAttribute.swift */,
 				EEA5C02C22F5C96B00B91D60 /* QuoteStripeAttribute.swift */,
 				EE0E54F72300800E0070C83F /* BlockBackgroundColorAttribute.swift */,
+				8199EC8A2C1852660042696B /* ImageUrlAttribute.swift */,
 			);
 			path = "Custom Attributes";
 			sourceTree = "<group>";
@@ -965,6 +968,7 @@
 				8A569F791E6B3EE7008BE2AC /* DownOptions.swift in Sources */,
 				EEEBEE72225D2F9200AE438D /* AttributedStringVisitor.swift in Sources */,
 				EEEBEE4B225D29D800AE438D /* List.swift in Sources */,
+				8199EC8B2C1852660042696B /* ImageUrlAttribute.swift in Sources */,
 				EEEBEE57225D2A6200AE438D /* Heading.swift in Sources */,
 				8A569F601E6B3ED9008BE2AC /* latex.c in Sources */,
 				8A569F711E6B3EDE008BE2AC /* DownGroffRenderable.swift in Sources */,

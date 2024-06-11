@@ -188,7 +188,7 @@ open class DownStyler: Styler {
 
     open func style(image str: NSMutableAttributedString, title: String?, url: String?) {
         guard let url = url else { return }
-        styleGenericLink(in: str, url: url)
+        styleGenericImage(in: str, url: url)
     }
 
     // MARK: - Common Styling
@@ -217,6 +217,11 @@ open class DownStyler: Styler {
         str.addAttributes([
             .link: url,
             .foregroundColor: colors.link])
+    }
+    
+    private func styleGenericImage(in str: NSMutableAttributedString, url: String) {
+        let attr = ImageUrlAttribute(url: url)
+        str.addAttribute(for: .imageUrl, value: attr)
     }
 
     // MARK: - Helpers

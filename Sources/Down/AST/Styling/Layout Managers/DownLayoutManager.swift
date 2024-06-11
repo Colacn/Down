@@ -82,7 +82,9 @@ public class DownLayoutManager: NSLayoutManager {
                                                   inCharacterRange: blockRange)
 
             let glyphRange = self.glyphRange(forCharacterRange: blockRange, actualCharacterRange: nil)
-
+            
+            var boundingRect = CGRect.null
+            
             enumerateLineFragments(forGlyphRange: glyphRange) { lineRect, lineUsedRect, container, lineGlyphRange, _ in
                 let isLineStartOfBlock = allBlockColorRanges.contains {
                     lineGlyphRange.overlapsStart(of: $0)
@@ -98,8 +100,14 @@ public class DownLayoutManager: NSLayoutManager {
                 let maxY = isLineEndOfBlock ? lineUsedRect.maxY + inset : lineUsedRect.maxY
                 let blockRect = CGRect(minX: minX, minY: minY, maxX: maxX, maxY: maxY).translated(by: origin)
 
-                context.fill(blockRect)
+                boundingRect = boundingRect.union(blockRect)
             }
+            
+            // Create a rounded rectangle path
+            let path = UIBezierPath(roundedRect: boundingRect.insetBy(dx: 0, dy: 0), cornerRadius: inset/2)
+
+            context.addPath(path.cgPath)
+            context.fillPath()
         }
     }
 
@@ -107,6 +115,7 @@ public class DownLayoutManager: NSLayoutManager {
         let characterRange = self.characterRange(forGlyphRange: glyphsToShow, actualGlyphRange: nil)
         drawThematicBreakIfNeeded(in: characterRange, at: origin)
         drawQuoteStripeIfNeeded(in: characterRange, at: origin)
+        drawImageUrlIfNeeded(in: characterRange, at: origin)
     }
 
     private func drawThematicBreakIfNeeded(in characterRange: NSRange, at origin: CGPoint) {
@@ -177,6 +186,74 @@ public class DownLayoutManager: NSLayoutManager {
             let stripeRect = CGRect(origin: $0, size: size)
             context.fill(stripeRect)
         }
+    }
+    
+    private func drawImageUrlIfNeeded(in characterRange: NSRange, at origin: CGPoint) {
+        guard let context = context else { return }
+        push(context: context)
+        defer { popContext() }
+
+        textStorage?.enumerateAttributes(for: .imageUrl,
+                                         in: characterRange) { (attr: ImageUrlAttribute, imageRange) in
+            
+            guard let url = URL(string: attr.url) else { return }
+            
+            // 使用 Kingfisher 下载图片
+            loadImage(from: url) { [weak self] image in
+                guard let self = self else { return }
+                guard let image = image else { return }
+                DispatchQueue.main.async {
+                    // 创建 NSTextAttachment
+                    let attachment = NSTextAttachment()
+                    attachment.image = image
+                    let attachmentString = NSAttributedString(attachment: attachment)
+                    
+                    // 替换文本范围为 NSTextAttachment
+                    self.textStorage?.replaceCharacters(in: imageRange, with: attachmentString)
+                    
+                    // 绘制
+                    let glyphRangeOfImageUrl = self.glyphRange(forCharacterRange: imageRange, actualCharacterRange: nil)
+                    self.drawGlyphs(forGlyphRange: glyphRangeOfImageUrl, at: origin)
+                }
+            }
+        }
+    }
+
+    private func loadImage(from url: URL) -> UIImage? {
+        var loadedImage: UIImage?
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            defer { semaphore.signal() }
+            guard let data = data, error == nil else { return }
+            loadedImage = UIImage(data: data)
+        }.resume()
+        
+        _ = semaphore.wait(timeout: .distantFuture)
+        return loadedImage
+    }
+    
+    open func loadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        // 使用 Kingfisher 下载图片
+        
+//        let imageView = UIImageView()
+//
+//        imageView.kf.setImage(with: url) { result in
+//            switch result {
+//            case .success(let value):
+//                completion(value.image)
+//            case .failure(let error):
+//                print("Error loading image: \(error)")
+//                completion(nil)
+//            }
+//        }
+    }
+    
+    private func drawImageUrl(with context: CGContext, image: UIImage, in rect: CGRect) {
+        context.saveGState()
+        defer { context.restoreGState() }
+        
+        context.draw(image.cgImage!, in: rect)
     }
 
     private func glyphRanges(for key: NSAttributedString.Key,
