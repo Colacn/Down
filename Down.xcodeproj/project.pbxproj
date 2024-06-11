@@ -10,6 +10,7 @@
 		14C5E33521877CE900D5380C /* DownView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D41689B51CFFE6BB00E5802B /* DownView.bundle */; };
 		26CABB93252B4D490032183C /* ChildSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CABB92252B4D490032183C /* ChildSequence.swift */; };
 		8199EC8B2C1852660042696B /* ImageUrlAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8199EC8A2C1852660042696B /* ImageUrlAttribute.swift */; };
+		8199EC922C1856E90042696B /* Down.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 8199EC912C1856E90042696B /* Down.podspec */; };
 		8A569F481E6B3ED2008BE2AC /* DownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43AE5D91CFFD0D0006E1522 /* DownView.swift */; };
 		8A569F491E6B3ED9008BE2AC /* blocks.c in Sources */ = {isa = PBXBuildFile; fileRef = D4201EF71CFA5D63008EEC6E /* blocks.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8A569F4A1E6B3ED9008BE2AC /* buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = D4201EF81CFA5D63008EEC6E /* buffer.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -147,7 +148,7 @@
 			isEditable = 1;
 			outputFiles = (
 			);
-			script = "";
+			script = "# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		8AE66BE31F848C2900ED4C98 /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
@@ -159,7 +160,7 @@
 			isEditable = 1;
 			outputFiles = (
 			);
-			script = "";
+			script = "# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		8AE66BE41F848C3900ED4C98 /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
@@ -171,7 +172,7 @@
 			isEditable = 1;
 			outputFiles = (
 			);
-			script = "";
+			script = "# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 /* End PBXBuildRule section */
 
@@ -203,6 +204,7 @@
 		14C5E33621877FCD00D5380C /* DownView (macOS).bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "DownView (macOS).bundle"; sourceTree = "<group>"; };
 		26CABB92252B4D490032183C /* ChildSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildSequence.swift; sourceTree = "<group>"; };
 		8199EC8A2C1852660042696B /* ImageUrlAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlAttribute.swift; sourceTree = "<group>"; };
+		8199EC912C1856E90042696B /* Down.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Down.podspec; sourceTree = "<group>"; };
 		8A569F401E6B3E50008BE2AC /* Down.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Down.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFAEAFB1E6E32E900E09B68 /* DownTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DownTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C73B9B522A687C400C8E60F /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 		D4201E761CFA5151008EEC6E = {
 			isa = PBXGroup;
 			children = (
+				8199EC912C1856E90042696B /* Down.podspec */,
 				EE39B28026063E0D002C4F8D /* .swiftlint.yml */,
 				D4201E9B1CFA59A5008EEC6E /* Sources */,
 				D41689B41CFFE6BB00E5802B /* Supporting Files */,
@@ -863,6 +866,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8199EC922C1856E90042696B /* Down.podspec in Resources */,
 				EED7FED825E3133C0033E33A /* DownView (macOS).bundle in Resources */,
 				14C5E33521877CE900D5380C /* DownView.bundle in Resources */,
 			);
